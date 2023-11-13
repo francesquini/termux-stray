@@ -1,0 +1,6 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+DIR=$(dirname "$0")
+RDIR=$(realpath "$DIR")
+
+$RDIR/termux-stray-send-command TermuxStrayIncreaseVolume

@@ -1,0 +1,9 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+FILE="$TMPDIR/termux-stray-control-pipe"
+
+if [ -p "$FILE" ]; then
+    echo "$1" > $FILE
+else
+    echo "Control pipe not found"
+fi
