@@ -37,6 +37,7 @@ Additionally, to use the multimedia keys to control the volume add the appropria
 
 ![Xfce Panel](./screenshots/hotkeys.png)
 
+And, of course, add a startup entry in `Applications > Settings > Session and Startup > Application Autostart` pointing to wherever you chose to place `termux-stray`. 
 
 ## Limitations
 
