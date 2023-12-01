@@ -32,7 +32,10 @@ def currentUpdateInterval():
 def updateStates():
     log("Updating states")
     for st in tasks:
-        st.updateState()
+        try:
+            st.updateState()
+        except:
+            log(sys.exc_info()[0])
     updIntvl = currentUpdateInterval()
     log(f"Update complete. Next update in {updIntvl} seconds.")
     taskrunner.enqueue(updIntvl, updateStates)

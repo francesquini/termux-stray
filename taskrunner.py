@@ -3,6 +3,7 @@ import threading
 import time
 from dataclasses import dataclass, field
 from typing import Any
+from utils import log
 
 @dataclass(order=True)
 class Task:
@@ -24,7 +25,10 @@ class TaskRunner:
                     task = self.queue.get()
                     due_in = task.when - time.time()
                     if due_in <= 0:
-                        task.run()
+                        try:
+                            task.run()
+                        except:
+                            log(sys.exc_info()[0])
                         self.queue.task_done()
                     else:
                         self.queue.put(task)
