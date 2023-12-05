@@ -1,6 +1,7 @@
 from queue import PriorityQueue
 import threading
 import time
+import traceback
 from dataclasses import dataclass, field
 from typing import Any
 from utils import log
@@ -28,7 +29,7 @@ class TaskRunner:
                         try:
                             task.run()
                         except:
-                            log(sys.exc_info()[0])
+                            traceback.print_exc()
                         self.queue.task_done()
                     else:
                         self.queue.put(task)

@@ -1,5 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/env python
 import os
+import traceback
 import threading
 
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
@@ -9,7 +10,7 @@ from taskrunner import TaskRunner
 from pipecontrol import PipeControl
 from volumestray import VolumeStray
 from batterystray import BatteryStray, BatteryStatus
-from wifistray import WifiStray
+from networkstray import NetworkStray, NetworkStatus
 from utils import log, yieldF
 
 taskrunner = None
@@ -35,7 +36,7 @@ def updateStates():
         try:
             st.updateState()
         except:
-            log(sys.exc_info()[0])
+            traceback.print_exc()
     updIntvl = currentUpdateInterval()
     log(f"Update complete. Next update in {updIntvl} seconds.")
     taskrunner.enqueue(updIntvl, updateStates)
@@ -78,11 +79,14 @@ if __name__ == "__main__":
     battery_status = BatteryStatus()
     addTask(battery_status)
 
+    network_status = NetworkStatus()
+    addTask(network_status)
+
     if BATTERY_SYSTRAY_ENABLE:
         addStray(BatteryStray(battery_status))
 
-    if WIFI_SYSTRAY_ENABLE:
-        addStray(WifiStray())
+    if NETWORK_SYSTRAY_ENABLE:
+        addStray(NetworkStray(network_status))
 
     if VOLUME_SYSTRAY_ENABLE:
         addStray(VolumeStray())

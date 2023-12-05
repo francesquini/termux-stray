@@ -6,7 +6,7 @@ exec(open('config.py').read())
 def yieldF():
     #Python being python, doesn't have proper support for concurrent programing
     #So we fake a yield with a short sleep ARGH!!
-    time.sleep(0.1)
+    time.sleep(1)
 
 def log(text):
     if LOGGING_ENABLED:

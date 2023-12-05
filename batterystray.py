@@ -82,10 +82,15 @@ class BatteryStray:
 
     def _generateMenu(self):
         dict = self.batStatus.getStateDict()
-        menu = pystray.Menu(lambda: (
+        menu = pystray.Menu(lambda: list((
                           pystray.MenuItem(
                               f"{i}: {dict[i]}",
-                              lambda: None
+                              None
                           )
-                          for i in list(dict)))
+                          for i in list(dict))) + \
+                          [pystray.Menu.SEPARATOR,
+                           pystray.MenuItem(
+                             "Quit",
+                             lambda: exit(0)
+                           )])
         return menu

@@ -155,6 +155,7 @@ class VolumeStray:
                        f"Streams (→ {self.stream})",
                        menu_stream
                    ),
+                   pystray.Menu.SEPARATOR,
                    pystray.MenuItem(
                        "Quit",
                        lambda: exit(0)

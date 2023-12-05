@@ -37,11 +37,16 @@ BATTERY_ICON_FILE_EXTENSION=".png"
 
 BATTERY_ICON_ON_AC_ADAPTER="./icons/battery-ac-adapter.png"
 
+
+#######################
+# Network configuration
+#######################
+
+NETWORK_SYSTRAY_ENABLE=True
+
 ############################
 # WiFi Systray Configuration
 ############################
-
-WIFI_SYSTRAY_ENABLE=True
 
 WIFI_CMD="/data/data/com.termux/files/usr/bin/termux-wifi-connectioninfo"
 WIFI_ENABLE_CMD="/data/data/com.termux/files/usr/bin/termux-wifi-enable"
@@ -55,3 +60,11 @@ WIFI_ICON_EXCELLENT_THOLD=-30
 WIFI_ICON_GOOD_THOLD=-45
 WIFI_ICON_OK_THOLD=-70
 WIFI_ICON_LOW_THOLD=-80
+
+################################
+# Ethernet Systray Configuration
+################################
+
+ETHERNET_IFCONFIG_COMMAND="/data/data/com.termux/files/usr/bin/ifconfig"
+ETHERNET_ICON_FILE_PREFIX="./icons/network-wired"
+ETHERNET_ICON_FILE_EXTENSION=".png"
